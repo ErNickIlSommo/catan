@@ -6,6 +6,8 @@ import { PORT, MONGODB_URL } from "./config.js";
 
 import { Server } from "socket.io";
 
+import authRoutes from "./routes/auth.js";
+
 const app = express();
 
 app.use(express.json());
@@ -23,6 +25,7 @@ app.use((req, res, next) => {
 });
 
 // app.use(routes)
+app.use("/api/v1/auth", authRoutes);
 
 mongoose
   .connect(MONGODB_URL)
